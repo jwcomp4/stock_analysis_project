@@ -1,0 +1,202 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2638
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Sub MacroCheck()\
+\
+    Dim testMessage As String\
+    \
+    testMessage = "Hello World!"\
+    \
+    MsgBox (testMessage)\
+    \
+End Sub\
+\
+Sub DQAnalysis()\
+\
+    Worksheets("DQ Analysis").Activate\
+    \
+    Range("A1").Value = "DAQO (Ticker: DQ)"\
+    \
+    'Create a header row\
+    \
+    Cells(3, 1).Value = "Year"\
+    \
+    Cells(3, 2).Value = "Total Daily Volume"\
+    \
+    Cells(3, 3).Value = "Return"\
+\
+\
+End Sub\
+\
+\
+\'97\'97\'97\'97\'97\
+220612\
+\
+Sub MacroCheck()\
+\
+    Dim testMessage As String\
+    \
+    testMessage = "Hello World!"\
+    \
+    MsgBox (testMessage)\
+    \
+End Sub\
+\
+Sub DQAnalysis()\
+\
+    Worksheets("DQ Analysis").Activate\
+    'This code tells VBA what sheet you're looking at\
+    \
+    Range("A1").Value = "DAQO (Ticker: DQ)"\
+    'Specifying the range you're putting in a value\
+    \
+    Cells(3, 1).Value = "Year"\
+    \
+    Cells(3, 2).Value = "Total Daily Volume"\
+    \
+    Cells(3, 3).Value = "Return"\
+\
+     'Note that the Cells object takes two arguments: row and col from the left. Here the row is set to the iterator.\
+\
+    Worksheets("2018").Activate\
+\
+    'initializing variables to use in the upcoming for loop\
+    \
+    rowStart = 2\
+\
+    'DELETE rowEnd = 3013\
+    \
+    'Finding a new way that doesn't rely on hardcoding / magic numbers\
+    \
+    'rowEnd = Range("A1").End(xlDown).Row\
+    'Found this solution on Excel Champs blog: https://excelchamps.com/vba/find-last-row-column-cell/\
+    \
+    rowEnd = Cells(Rows.Count, "A").End(xlUp).Row\
+    'Found this solution on Stack Overflow: https://stackoverflow.com/questions/38882321/better-way-to-find-last-used-row\
+    'Cells(Rows.Count, "A") goes to bottom cell in col. A\
+    '.End(xlUp) goes to the last cell with data in col A\
+    '.Row returns the row number\
+    \
+    totalVolume = 0\
+    \
+    Dim startingPrice As Double\
+    'Here making sure to assign the data type to the variable because prices can have a decimal (need to use Double data type)\
+    \
+    Dim endingPrice As Double\
+    \
+    For i = rowStart To rowEnd\
+    'starting a for loop, including an iterator and the range using the two variables set above.\
+    \
+        'increase totalVolume\
+        \
+        'Adding a conditional if statement to capture only the volumes that are associated with DQ\
+        \
+        If Cells(i, 1).Value = "DQ" Then\
+        \
+            totalVolume = totalVolume + Cells(i, 8).Value\
+            \
+        End If\
+            \
+            \
+        If Cells(i, 1).Value = "DQ" And Cells(i - 1, 1).Value <> "DQ" Then\
+        \
+            startingPrice = Cells(i, 6).Value\
+            \
+            'set starting price using another conditional if statement\
+            \
+        \
+        End If\
+        \
+        If Cells(i, 1).Value = "DQ" And Cells(i + 1, 1).Value <> "DQ" Then\
+            \
+            endingPrice = Cells(i, 6).Value\
+            \
+            'set ending price using another conditional if statement\
+            \
+        End If\
+    \
+       \
+        \
+        \
+    Next i\
+    \
+    MsgBox (totalVolume)\
+    \
+    'Activate the DQ Analysis sheet so we can write into that sheet\
+    \
+    Worksheets("DQ Analysis").Activate\
+    \
+    'Using the Cells() method to write specific values into the cells. Note that the second use of Cells() is using the value assigned to totalVolume via the above for loop with conditional\
+    \
+    Cells(4, 1).Value = 2018\
+    \
+    Cells(4, 2).Value = totalVolume\
+    \
+    Cells(4, 3).Value = endingPrice / startingPrice - 1\
+\
+\
+End Sub\
+\
+\
+\
+Sub AllStocksAnalysis()\
+\
+    Worksheets("All Stocks Analysis").Activate\
+    'tells VBA that you want to work in that worksheet\
+    \
+    Range("A1").Value = "All Stocks (2018)"\
+    'sets value of A1 to All Stocks (2018)\
+    \
+    Cells(3, 1).Value = "Ticker"\
+    Cells(3, 2).Value = "Total Daily Volume"\
+    Cells(3, 3).Value = "Return"\
+    'creates headers with those values\
+    \
+    Dim tickers(11) As String\
+    'Initiates the tickers list - creates an empty list with the designated number of indexes. Sets data type As String\
+    \
+    tickers(0) = "AY"\
+    tickers(1) = "CISQ"\
+    tickers(2) = "DQ"\
+    tickers(3) = "ENPH"\
+    tickers(4) = "FSLR"\
+    tickers(5) = "HASI"\
+    tickers(6) = "JKS"\
+    tickers(7) = "RUN"\
+    tickers(8) = "SEDG"\
+    tickers(9) = "SPWR"\
+    tickers(10) = "TERP"\
+    tickers(11) = "VSLR"\
+    'Assigns each index with the appropriate String\
+    \
+    For i = 0 To 11\
+    \
+        ticker = ticker(i)\
+        \
+    Next i\
+\
+\
+\'97\
+Skill Drill on 2.3.2:\
+\
+    Row = 30\
+    Sum = 0\
+    \
+    For i = 1 To 10\
+        \
+        Cells(1, i).Value = 1\
+        \
+            For j = 1 To Row\
+            \
+                Cells(j, i).Value = j + Sum\
+            \
+            Next j\
+            \
+        \
+    Next i\
+    \
+}
