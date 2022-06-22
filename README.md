@@ -2,16 +2,16 @@
 
 ## Project Overview
 
-- For this analysis, we are mining the 2017 and 2018 green stocks dataset ti find the total daily volume for each stock and calulate the annual return for each corresponding year to help Steve advise his parents investment strategies.
+- For this analysis, we are mining the 2017 and 2018 green stocks dataset to find the total daily volume for each stock and calulate the annual return for each corresponding year to help Steve advise his parents investment strategies.
 
-- In this particular challenge, I am refactoring the code to run more efficiently so Steve can use this script for any size dataset to return accurate and easily read analysis quickly. 
+- In this particular challenge, I am refactoring the code to run more efficiently so Steve can use this script for any size dataset to return an accurate and easily read analysis quickly. 
 
 ## Results
 
 ### Comparing 2017 and 2018 Green Stocks
 
 - Generally, all of the stocks performed better in 2017 than in 2018 with the exception of RUN. 
-    - In both 2017 RUN and 2018, RUN returned a profit with 2018 seeing an 84% return and a 5.5% return in 2017. 
+    - In both 2017 and 2018, RUN returned a profit with 2018 seeing an 84% return and a 5.5% return in 2017. 
     - Additionally, ENPH was the only other green stock to see consistant growth in both 2017 and 2018, returning 129.5% and 81.9% respectively.
     
     PHOTOS OF RESULTS
@@ -20,7 +20,7 @@
 
 ### Original vs. Refactored Script
 
-- While producing accurate results, the original script included a nested for-loop to find the total volume and annual return for each indixe of the tickers array, resulting in the script iterating through the entire dataset 12 times, taking .31 seconds for each the 2017 and 2018 datasets. Below is the code demonstrating the inefficient nested for-loop: 
+- While producing accurate results, the original script included a nested for-loop to find the total volume and annual return for each indixe of the tickers array, resulting in the script iterating through the entire dataset 12 times, taking .31 seconds for each the 2017 and 2018 datasets. Below is the code highlighting the inefficient nested for-loop: 
 
     For i = 0 To 11
     
