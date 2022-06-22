@@ -19,7 +19,9 @@
 
 ### Original vs. Refactored Script
 
-- While producing accurate results, the original script included a nested for-loop to find the total volume and annual return for each indixe of the tickers array, resulting in the script iterating through the entire dataset 12 times, taking .31 seconds for each the 2017 and 2018 datasets. Below is the code highlighting the inefficient nested for-loop: 
+- While producing accurate results, the original script included a nested for-loop to find the total volume and annual return for each index of the tickers array, resulting in the script iterating through the entire dataset 12 times, taking .31 seconds for each the 2017 and 2018 datasets.
+
+- Below is the code highlighting the inefficient nested for-loop: 
 
     
         For i = 0 To 11
