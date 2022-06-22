@@ -71,7 +71,46 @@
 
         Next i
 
-- The refactored script only loops through the data one time producing the same results in only .08 second for each dataset.
+- The refactored script only loops through the data one time producing the same results in only .08 second for each dataset (74% faster).
+    - Below is the code highlighting the the more efficient structure:
+
+        Next i
+        
+    ''2b) Loop over all the rows in the spreadsheet.
+    For i = 2 To RowCount
+    
+        '3a) Increase volume for current ticker
+        
+        If Cells(i, 1).Value = tickers(tickerIndex) Then
+            
+            tickerVolumes(tickerIndex) = tickerVolumes(tickerIndex) + Cells(i, 8).Value
+        
+        End If
+        
+        '3b) Check if the current row is the first row with the selected tickerIndex.
+        
+        If Cells(i, 1).Value = tickers(tickerIndex) And Cells(i - 1, 1).Value <> tickers(tickerIndex) Then
+        
+            tickerStartingPrices(tickerIndex) = Cells(i, 6).Value
+            
+        End If
+            
+        '3c) check if the current row is the last row with the selected ticker
+         'If the next row’s ticker doesn’t match, increase the tickerIndex.
+      
+         If Cells(i, 1).Value = tickers(tickerIndex) And Cells(i + 1, 1).Value <> tickers(tickerIndex) Then
+        
+            tickerEndingPrices(tickerIndex) = Cells(i, 6).Value
+            
+         '3d Increase the tickerIndex.
+                 
+            
+            tickerIndex = tickerIndex + 1
+        
+        End If
+    
+    Next i
+    
 
 PHOTOS of 2017 and 2018 TIMES 
 
