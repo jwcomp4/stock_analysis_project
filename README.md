@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-- For this analysis, we are mining the 2017 and 2018 green stocks dataset to find the total daily volume for each stock and calulate the annual return for each corresponding year to help Steve advise his parents investment strategies.
+- For this analysis, we are mining the 2017 and 2018 green stocks dataset to find the total daily volume for each stock and calculate the annual return for each corresponding year to help Steve advise his parents' investment strategies.
 
 - In this particular challenge, I am refactoring the code to run more efficiently so Steve can use this script for any size dataset to return an accurate and easily read analysis quickly. 
 
@@ -11,7 +11,7 @@
 ### Comparing 2017 and 2018 Green Stocks
 
 - Generally, all of the stocks performed better in 2017 than in 2018 with the exception of RUN. 
-- 
+
     - In both 2017 and 2018, RUN returned a profit with 2018 seeing an 84% return and a 5.5% return in 2017. 
     - Additionally, ENPH was the only other green stock to see consistant growth in both 2017 and 2018, returning 129.5% and 81.9% respectively.
 
@@ -73,6 +73,7 @@
         Next i
 
 - The refactored script only loops through the data one time producing the same results in only .08 second for each dataset (74% faster).
+
     - Below is the code highlighting the the more efficient structure:
         
         '2b) Loop over all the rows in the spreadsheet.
@@ -110,7 +111,7 @@
             End If
 
             Next i
-     - The script returns the following messages boxes for each run:
+     - This refactored script returns the following message boxes for each run:
      -  2017:
 
           ![Image of the 2017 message box](/Resources/VBA_Challenge_2017.png "VBA Challenge 2017")
