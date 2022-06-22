@@ -22,7 +22,8 @@
 
 - While producing accurate results, the original script included a nested for-loop to find the total volume and annual return for each indixe of the tickers array, resulting in the script iterating through the entire dataset 12 times, taking .31 seconds for each the 2017 and 2018 datasets. Below is the code highlighting the inefficient nested for-loop: 
 
-    For i = 0 To 11
+    
+        For i = 0 To 11
     
         ticker = tickers(i)
         totalVolume = 0
@@ -61,14 +62,14 @@
             
         Next j
     
-    '6 Output the data for the current ticker doing the same analysis as DQ
-    Worksheets("All Stocks Analysis").Activate
+        '6 Output the data for the current ticker doing the same analysis as DQ
+        Worksheets("All Stocks Analysis").Activate
 
-    Cells(4 + i, 1).Value = ticker
-    Cells(4 + i, 2).Value = totalVolume
-    Cells(4 + i, 3).Value = endingPrice / startingPrice - 1
-    
-    Next i
+        Cells(4 + i, 1).Value = ticker
+        Cells(4 + i, 2).Value = totalVolume
+        Cells(4 + i, 3).Value = endingPrice / startingPrice - 1
+
+        Next i
 
 - The refactored script only loops through the data one time producing the same results in only .08 second for each dataset.
 
