@@ -1,4 +1,4 @@
-# Module 2 Challenge: Refactoring Stocks Analysis Script
+# Refactoring Stocks Analysis Script
 
 ## Project Overview
 
